@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <provider
+            android:authorities="com.designlife.justdo_provider.domain.provider"
+            android:name=".domain.provider.TodoProvider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="com.designlife.justdo_provider.READ_PERMISSION"
+            android:writePermission="com.designlife.justdo_provider.WRITE_PERMISSION">
+        </provider>
+    </application>
+</manifest>
