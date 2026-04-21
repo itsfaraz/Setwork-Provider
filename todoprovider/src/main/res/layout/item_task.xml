@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/taskItem"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:clickable="true"
     android:padding="12dp"
-    android:id="@+id/taskItem"
     android:background="@drawable/bg_card"
     android:layout_marginBottom="6dp">
 
@@ -16,9 +15,8 @@
         android:id="@+id/taskStatusDot"
         android:layout_width="8dp"
         android:layout_height="8dp"
-        android:backgroundTint="@color/blue_color"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/bg_status_dot"/>
+        android:src="@drawable/bg_status_dot"
+        android:layout_marginEnd="10dp"/>
 
     <!-- Text container (flexible) -->
     <LinearLayout

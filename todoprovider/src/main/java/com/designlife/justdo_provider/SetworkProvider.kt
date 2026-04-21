@@ -10,18 +10,31 @@ class SetworkProvider(
     private val context: Context
 ) {
     fun addTask(task: ProviderTask){
-        SetworkProvider.setTask(task)
-        updateRemoteView()
+        try {
+            SetworkProvider.setTask(task)
+            updateRemoteView()
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
     }
     
     fun removeTask(task: ProviderTask){
-        SetworkProvider.tasks.removeIf { stask -> stask.id == task.id }
-        updateRemoteView()
+        try {
+            SetworkProvider.tasks.removeIf { stask -> stask.id == task.id }
+            updateRemoteView()
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
     }
 
     fun addTaskList(tasks: List<ProviderTask>){
-        SetworkProvider.setTasks(tasks)
-        updateRemoteView()
+        try {
+            SetworkProvider.setTasks(tasks)
+            updateRemoteView()
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
+
     }
 
     private fun updateRemoteView(){

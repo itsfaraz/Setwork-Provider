@@ -73,13 +73,16 @@ class AppWidget : AppWidgetProvider() {
             views.setOnClickPendingIntent(R.id.btnChat, chatPendingIntent)
 
 
-            val clickIntent = Intent(context, AppWidget::class.java)
+            val clickIntent = Intent(context, AppWidget::class.java).apply {
+                action = ProviderUtils.ACTION_TASK_CLICK
+                setPackage(context.packageName)
+            }
 
             val clickPendingIntent = PendingIntent.getBroadcast(
                 context,
                 0,
                 clickIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
             )
 
             views.setPendingIntentTemplate(R.id.listView, clickPendingIntent)
@@ -105,19 +108,8 @@ class AppWidget : AppWidgetProvider() {
                             putExtra("taskId", -1)
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                         }
-                        Log.i("NOTIFICATION_FLOW", "NotificationClickManager:: getNotificationIntent : pending intent")
                         context.startActivity(intent)
                     }
-
-                    // Temporary Code
-//                    SetworkProvider(context).addTask(
-//                        Task(
-//                            title = "New Task",
-//                            description = "Added from widget",
-//                            time = System.currentTimeMillis(),
-//                            color = androidx.compose.ui.graphics.Color.Red
-//                        )
-//                    )
 
                     // Always update
                     updateList(context)
@@ -136,25 +128,21 @@ class AppWidget : AppWidgetProvider() {
                             putExtra("taskId", -1)
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                         }
-                        Log.i("NOTIFICATION_FLOW", "NotificationClickManager:: getNotificationIntent : pending intent")
                         context.startActivity(intent)
                     }
                 }
 
                 ProviderUtils.ACTION_TASK_CLICK -> {
-                    val index = intent.getIntExtra(ProviderUtils.TASK_ID, -1)
-                    if (index != -1) {
-                        val task = SetworkProvider.tasks[index]
-
+                    val taskId = intent.getIntExtra(ProviderUtils.TASK_ID, -1)
+                    if (taskId != -1) {
                         val activity : Activity = Class.forName(ProviderUtils.CLASS_PATH).newInstance() as Activity
                         activity?.let {
                             val intent = Intent(context, activity::class.java).apply {
                                 putExtra("fromProvider", true)
                                 putExtra("actionId", -3)
-                                putExtra("taskId", task.id)
+                                putExtra("taskId", taskId)
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                             }
-                            Log.i("NOTIFICATION_FLOW", "NotificationClickManager:: getNotificationIntent : pending intent")
                             context.startActivity(intent)
                         }
                     }
@@ -165,7 +153,7 @@ class AppWidget : AppWidgetProvider() {
                 }
             }
         }catch (e : Exception){
-            Log.e("Setwork_Provider", "onReceive: ${e.message}")
+            Log.e("PROVIDER_FLOW", "onReceive: ${e.message}")
         }
 
     }

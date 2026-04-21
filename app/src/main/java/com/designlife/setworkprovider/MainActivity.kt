@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(onClick = {
                     SetworkProvider(this@MainActivity).addTask(ProviderTask(
+                        id = System.currentTimeMillis(),
                         title = "Widget Task",
                         description = "Description of widget task : lorem ipsum few lines here and there",
                         color = Color.Yellow,
