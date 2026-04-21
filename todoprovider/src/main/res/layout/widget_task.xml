@@ -1,0 +1,151 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/widgetTask"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_layout">
+
+    <!-- 🔷 HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@drawable/bg_header">
+
+        <!-- Left text -->
+        <TextView
+            android:id="@+id/dayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thursday"
+            android:paddingEnd="12dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_color"/>
+
+        <!-- Left text -->
+        <TextView
+            android:id="@+id/dayNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="14"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+
+        <!-- RIGHT: Buttons container -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Chat Button -->
+            <ImageView
+                android:id="@+id/btnChat"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/component_background_circle"
+                android:padding="10dp"
+                android:layout_marginEnd="14dp"
+                android:src="@drawable/ic_chat"
+                android:scaleType="centerInside"/>
+
+            <ImageView
+                android:id="@+id/btnAdd"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/component_background_circle"
+                android:padding="10dp"
+                android:src="@drawable/ic_add"
+                android:scaleType="centerInside"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:paddingVertical="2dp"
+        android:visibility="visible"
+        android:paddingHorizontal="4dp"
+        android:layout_marginVertical="2dp"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"/>
+
+
+    <!-- Empty Widget Task -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/emptyWidgetTask"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_app_logo"
+                android:contentDescription="App Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Setwork - "
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Task"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="20dp"
+            android:paddingVertical="24dp"
+            android:background="@drawable/bg_card"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No task found"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/emptyTaskBtnRefresh"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:background="@drawable/component_background_circle_white"
+            android:padding="10dp"
+            android:src="@drawable/ic_refresh"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+</LinearLayout>

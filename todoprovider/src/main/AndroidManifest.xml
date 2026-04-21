@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application>
-        <provider
-            android:authorities="com.designlife.justdo_provider.domain.provider"
-            android:name=".domain.provider.TodoProvider"
-            android:exported="true"
-            android:grantUriPermissions="true"
-            android:readPermission="com.designlife.justdo_provider.READ_PERMISSION"
-            android:writePermission="com.designlife.justdo_provider.WRITE_PERMISSION">
-        </provider>
+        <receiver
+            android:name=".presentation.AppWidget"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_info"/>
+        </receiver>
+        <service
+            android:name=".presentation.view.TaskWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 </manifest>
