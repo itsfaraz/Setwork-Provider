@@ -3,12 +3,21 @@ package com.designlife.justdo_provider
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
+import com.designlife.justdo_provider.common.ProviderUtils
 import com.designlife.justdo_provider.data.ProviderTask
 import com.designlife.justdo_provider.presentation.AppWidget
 
 class SetworkProvider(
     private val context: Context
 ) {
+
+    fun addLocation(
+        latitude : Double,
+        longitude : Double
+    ){
+        ProviderUtils.LATITUDE = latitude
+        ProviderUtils.LONGITUDE = longitude
+    }
     fun addTask(task: ProviderTask){
         try {
             SetworkProvider.setTask(task)

@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import com.designlife.justdo_provider.R
 import com.designlife.justdo_provider.SetworkProvider
 import com.designlife.justdo_provider.data.ProviderTask
-import com.designlife.justdo_provider.presentation.ProviderUtils
+import com.designlife.justdo_provider.common.ProviderUtils
 import androidx.core.net.toUri
 
 class TaskFactory(

@@ -2,5 +2,6 @@
 <resources>
     <color name="layout_color">#FF282626</color>
     <color name="blue_color">#FF5779F4</color>
-    <color name="transparent_color">#38CADED9</color>
+    <color name="transparent_color">#16F4F4F4</color>
+    <color name="gray_color">#9A737070</color>
 </resources>
